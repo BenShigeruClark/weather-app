@@ -6,3 +6,12 @@ request({ url: url, json: true }, (error, response) => {
     // console.log(response.body.currently)
     console.log(response.body.daily.data[0].summary + " It is currently " + response.body.currently.temperature + " degrees out.  There is a " + response.body.currently.precipProbability + "% chance of rain.")
 })
+
+const goecodeURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoiYmVuY2xhcmsxIiwiYSI6ImNrMnkwY2dkdTAzMXozaHJxY3Y5aDE5ZjkifQ.6KYu8f82OMAi6dRoz23nSA'
+
+request({ url: goecodeURL, json: true}, (error, response) => {
+    const latitude = response.body.features[3].center[1]
+    const longitude = response.body.features[3].center[0]
+    console.log("The latitude for LA is: " + latitude)
+    console.log("The longitude for LA is: " + longitude)
+})
